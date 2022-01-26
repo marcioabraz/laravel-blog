@@ -8,5 +8,5 @@
         <br>
         <button type="submit">Editar</button>
     </form>
-    <a href="/posts/delete/{{$post->id}}"></a>
+    <a href="/posts/delete/{{$post->id}}">Deletar</a>
 @endsection
