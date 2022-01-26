@@ -53,10 +53,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //ver com o eduardo
-        // $post = Post::find($id);
-        // return view('posts.show',compact('post'));
+        $user = auth()->user();
+        $post = Post::find($id);
 
+        if ($user->id != $post->user_id){//validar usuario 
+            abort(404);
+        }
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -91,9 +94,6 @@ class PostController extends Controller
             'content'=> $request->content
         ]);
         return redirect('/dashboard');
-
-
-        
     }
 
     /**
@@ -104,6 +104,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/dashboard');
     }
 }
