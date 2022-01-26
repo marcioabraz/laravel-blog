@@ -42,7 +42,7 @@ class PostController extends Controller
             'content' => $request->content,
             'user_id'=> $user->id
         ]);
-        return redirect('/dashboard');
+        return redirect('/posts');
     }
 
     /**
@@ -93,7 +93,7 @@ class PostController extends Controller
             'title' => $request->title,
             'content'=> $request->content
         ]);
-        return redirect('/dashboard');
+        return redirect('/posts');
     }
 
     /**
@@ -106,6 +106,6 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/dashboard');
+        return redirect('/posts');
     }
 }
